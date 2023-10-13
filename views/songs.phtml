@@ -1,0 +1,68 @@
+<div class="container-fluid"> 
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Seznam písniček</h2>
+
+            <table>
+                <?php foreach ($songs as $song) : ?>
+                    <tr>
+                        <td class="pb-3">
+                            <h5><a href="song/<?= $song['url'] ?>"><?php echo($song['artist'] . ' - ' . $song['title']); ?></a></h5>
+                            <?php if ($admin): ?>
+                            <a href="editor/<?=$song['url']?>">Upravit</a>
+                            <a href="song/<?=$song['url']?>/delete">Odstranit</a>
+                            <?php endif;?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+
+
+        <div class="col-lg-6">
+            <form method="post">
+                <div>
+                    <select name="dropdown1">
+                        <option disabled selected value>--Vyberte si akord--</option>
+                        <?php foreach ($chords as $chord1): ?>
+                            <option value="<?= $chord1 ?>"><?= $chord1 ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div>
+                    <select name="dropdown2">
+                        <option disabled selected value>--Vyberte si akord--</option>
+                        <?php foreach ($chords as $chord2): ?>
+                            <option value="<?= $chord2 ?>"><?= $chord2 ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div>
+                    <select name="dropdown3">
+                        <option disabled selected value>--Vyberte si akord--</option>
+                        <?php foreach ($chords as $chord3): ?>
+                            <option value="<?= $chord3 ?>"><?= $chord3 ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div>
+                    <select name="dropdown4">
+                        <option disabled selected value>--Vyberte si akord--</option>
+                        <?php foreach ($chords as $chord4): ?>
+                            <option value="<?= $chord4 ?>"><?= $chord4 ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div>
+                    <select name="dropdown5">
+                        <option disabled selected value>--Vyberte si akord--</option>
+                        <?php foreach ($chords as $chord5): ?>
+                            <option value="<?= $chord5 ?>"><?= $chord5 ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <input type="submit" value="Vybrat akordy">
+            </form>
+        </div>
+    </div>
+</div>

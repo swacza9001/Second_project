@@ -1,0 +1,45 @@
+
+
+<form method="post">
+    <div>
+        <select name="dropdown1">
+            <option disabled selected value>--Vyberte si akord--</option>
+            <?php foreach ($chords as $chord): ?>
+                <option value="<?= $chord ?>"><?= $chord ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div>
+        <select name="dropdown2">
+            <option disabled selected value>--Vyberte si akord--</option>
+            <?php foreach ($chords as $chord): ?>
+                <option value="<?= $chord ?>"><?= $chord ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div>
+        <select name="dropdown3">
+            <option disabled selected value>--Vyberte si akord--</option>
+            <?php foreach ($chords as $chord): ?>
+                <option value="<?= $chord ?>"><?= $chord ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div>
+        <select name="dropdown4">
+            <option disabled selected value>--Vyberte si akord--</option>
+            <?php foreach ($chords as $chord): ?>
+                <option value="<?= $chord ?>"><?= $chord ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div>
+        <select name="dropdown5">
+            <option disabled selected value>--Vyberte si akord--</option>
+            <?php foreach ($chords as $chord): ?>
+                <option value="<?= $chord ?>"><?= $chord ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <input type="submit" value="Vybrat akordy">
+</form>

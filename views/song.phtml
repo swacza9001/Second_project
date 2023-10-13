@@ -1,0 +1,17 @@
+<h2><?php echo($artist . " - " . $title); ?> </h2>
+
+<div class="d-flex mb-5">
+    <?php foreach ($songsChordsPath as $chordPath): ?>
+    <div class="card" style="width: 12rem">
+        <img src="<?= $chordPath ?>" class="card-img-top mx-auto">
+        <div class="card-body">
+            <h4 class="text-center"><?php echo(str_replace("images/", "", str_replace(".jpg", "", $chordPath)))?>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+
+<h2 class="mb-5"><?= $strumming_pattern ?> </h2>
+<pre style="font-family: Segoe UI, sans-serif">
+<p><?php echo($_lyrics) ?> </p>
+</pre>

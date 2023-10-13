@@ -1,0 +1,25 @@
+<div class="container w-50">
+    <p class="h2">Kontaktní formulář</p>
+
+    <p class="lead">Sdělte nám svoje názory a poznatky</p>
+
+
+    <form method="post" id="form-email">
+        <div class="form-group">
+            <label for="email-sender">Email</label>
+            <input type="email" name="email" class="form-control" id="email-sender" required="required" value="<?php if (isset($_POST['email'])) echo(htmlspecialchars ($_POST['email'])); ?>" aria-describedby="senders-email" placeholder="vas@mail.cz">
+        </div>
+
+        <div class="form-group">
+            <label for="antispam">Antispam - zadejte aktuální rok</label>
+            <input type="text" name="year" required="required" class="form-control" id="antispam">
+        </div>
+
+        <div class="form-group">
+            <label for="message">Vaše zpráva</label>
+            <textarea name="message" class="form-control" id="message" rows="6"><?php if (isset($_POST['message'])) echo(htmlspecialchars ($_POST['message'])); ?> </textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Odeslat</button>
+    </form>
+</div>
