@@ -1,23 +1,34 @@
 <?php
 
 class SongController extends Controller {
-
+    /**
+     * vyvolání písničky(písniček)
+     * @param array $parameters
+     * @return void
+     */
     public function process(array $parameters): void {
         $songsManager = new SongsManager();
+        //volání databáze k zobrazení akordů
         $chords = $songsManager->getChords();
         $this->data['chords'] = $chords;
         
         $userManager = new UserManager();
+        //ověření práv uživatele
         $user = $userManager->getUser();
         $this->data['admin'] = $user && $user['admin'];
         
+        //smazání písničky
         if(!empty($parameters[1]) && $parameters[1] == 'delete') {
             $this->verifyUser(true);
             $songsManager->deleteSong($parameters[0]);
             $this->addMessage('warning', 'Písnička byla odstraněna.');
             $this->reroute('song');
-        } else if (!empty($parameters[0])) {
+        } 
+        //zobrazení konkrétní písničky
+        else if (!empty($parameters[0])) {
+            //zobrazení dat písničky
             $song = $songsManager->getSong($parameters[0]);
+            //zobrazení obrázků relevantních akordů
             $songsChordsPath = $songsManager->getSongsChordsPath($parameters[0]);
             if (!$song)
                 $this->reroute('chyba');
@@ -35,7 +46,9 @@ class SongController extends Controller {
             $this->data['songsChordsPath'] = $songsChordsPath;
 
             $this->view = 'song';
-        } else {
+        } 
+        //zobrazení všech písniček v databázi
+        else {
             if ($_POST) {
                 $chordNames = array();
                 foreach ($_POST as $chord) {

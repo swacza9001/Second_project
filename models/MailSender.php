@@ -1,7 +1,14 @@
 <?php
 
 class MailSender {
-    
+    /**
+     * odeslání mailu
+     * @param string $receiver 
+     * @param string $subject
+     * @param string $message
+     * @param string $sender
+     * @return bool
+     */
     public function sendMail(string $receiver, string $subject, string $message, string $sender) : bool {
         $header = "From: " . $sender;
         $header .= "\nMIME-Version: 1.0\n";

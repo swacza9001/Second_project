@@ -1,7 +1,11 @@
 <?php
 
 class RegistrationController extends Controller {
-    
+    /**
+     * registrace
+     * @param array $parameters
+     * @return void
+     */
     public function process(array $parameters): void {
         $this->header['title'] = 'Registrace';
         

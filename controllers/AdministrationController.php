@@ -1,7 +1,11 @@
 <?php
 
 class AdministrationController extends Controller {
-    
+     /**
+      * Administrace profilu
+      * @param array $parameters parametry v URL
+      * @return void
+      */
     public function process(array $parameters): void {
         $this->verifyUser();
         

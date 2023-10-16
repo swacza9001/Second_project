@@ -1,15 +1,27 @@
 <?php
 
 abstract class Controller {
-        
+    /**
+     * 
+     * @var array předává data do pohledů
+     */
     protected array $data = array();
-    
+    /**
+     * 
+     * @var string pohled, který se má otevřít
+     */
     protected string $view = "";
-    
+    /**
+     * 
+     * @var array predává data hlavičce stránky
+     */
     protected array $header = array("title" => "", "keywords" => "", "description" => "");
     
     abstract function process (array $parameters) : void;
-    
+    /**
+     * otevření pohledů
+     * @return void
+     */
     public function renderView() : void {
         if ($this->view) {
             extract($this->safeEntities($this->data));
@@ -17,14 +29,22 @@ abstract class Controller {
             require("views/" . $this->view . ".phtml");
         }
     }
-    
+    /**
+     * přesměrování stránky
+     * @param string $url
+     * @return never
+     */
     public function reroute(string $url): never
     {
         header("Location: /$url");
         header("Connection: close");
         exit;
     }
-    
+    /**
+     * ošetření proměnných proti XSS
+     * @param mixed $x 
+     * @return mixed
+     */
     private function safeEntities(mixed $x = null): mixed {
         if(!isset($x))
             return null;
@@ -38,7 +58,11 @@ abstract class Controller {
         } else 
             return $x;
     }
-    
+    /**
+     * ověření uživatele a jeho práv
+     * @param bool $admin 
+     * @return void
+     */
     public function verifyUser(bool $admin = false): void {
         $userManager = new UserManager();
         $user = $userManager->getUser();
@@ -47,7 +71,12 @@ abstract class Controller {
             $this->reroute('signIn');
         }
     }
-    
+    /**
+     * přidávání zpráv
+     * @param string $style způsob ostylování zprávy
+     * @param string $message zpráva k zobrazení
+     * @return void
+     */
     public function addMessage(string $style, string $message): void {
         if (isset($_SESSION['messages'])){
             $_SESSION['messages'][] = array('style' => $style, 'message' => $message);
@@ -56,7 +85,10 @@ abstract class Controller {
             
         }
     }
-    
+    /**
+     * předávání zpráv ze SESSION
+     * @return array
+     */
     public function getMessages(): array
     {
         if (isset($_SESSION['messages'])) {

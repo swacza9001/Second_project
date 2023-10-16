@@ -1,7 +1,11 @@
 <?php
 
 class ContactController extends Controller {
-    
+    /**
+     * Kontaktní formulář
+     * @param array $parameters parametry v URL
+     * @return void
+     */
     public function process(array $parameters): void {
         $this->header = array(
             'title' => 'Kontaktní formulář',
